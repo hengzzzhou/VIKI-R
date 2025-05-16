@@ -6,7 +6,7 @@ import random
 CONTAINER_ASSETS = ['plate', 'cabinet', 'drawer', 'bowl', 'sink', 'toaster', 'tray']
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', '--data', type=str, default='/fs-computility/mabasic/zhouheng/RoboViki-R/RoboFactory/script_general/output.json', help='data for eval')
+    parser.add_argument('-d', '--data', type=str, default='RoboViki-R/RoboFactory/script_general/output.json', help='data for eval')
     return parser.parse_args()
 
 
