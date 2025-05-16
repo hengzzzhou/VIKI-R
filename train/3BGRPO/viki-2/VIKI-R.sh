@@ -2,19 +2,19 @@ set -x
 ENGINE=${1:-vllm}
 export VLLM_ATTENTION_BACKEND=XFORMERS
 EXP_NAME='qwen2_5_vl_3b_VIKI_L2_rft'
-OUTPUT_DIR="/fs-computility/mabasic/zhouheng/work/embodied/verl/checkpoints/${EXP_NAME}"
+OUTPUT_DIR="/path/to/checkpoints/${EXP_NAME}"
 
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/train.parquet \
-    data.val_files=/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/val.parquet \
+    data.train_files=/path/to/data/viki/viki_plan_final/split_6/id/train.parquet \
+    data.val_files=/path/to/data/viki/viki_plan_final/split_6/id/val.parquet \
     data.train_batch_size=256 \
     data.max_prompt_length=4096 \
     data.max_response_length=2048 \
     data.filter_overlong_prompts=True \
     data.truncation='error' \
     data.image_key=images \
-    actor_rollout_ref.model.path=/fs-computility/mabasic/zhouheng/LLaMA-Factory/saves/qwen2.5_vl-3b/full/viki_2_sft_490/checkpoint-62 \
+    actor_rollout_ref.model.path=/path/to/models/qwen2.5_vl-3b/full/viki_2_sft_490/checkpoint-62 \
     actor_rollout_ref.actor.optim.lr=1e-6 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.ppo_mini_batch_size=128 \
