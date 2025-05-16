@@ -133,11 +133,11 @@ def main():
     args = parser.parse_args()
     model_name = args.model
     
-    data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_3/split/test.json")
-    output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/viki_3/opensource/test"
+    data=load_data("data/viki/viki_3/split/test.json")
+    output_dir = "eval/viki_3/opensource/test"
     
-    # data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/test.json")
-    # output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/56new/id"
+    # data=load_data("data/viki/viki_plan_final/split_6/id/test.json")
+    # output_dir = "eval/56new/id"
 
     os.makedirs(output_dir, exist_ok=True)
     

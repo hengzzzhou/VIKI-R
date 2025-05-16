@@ -133,11 +133,11 @@ def process_sample(idx, sample, output_dir):
     }
 
 def main():
-    data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_3/split/test.json")
-    output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/viki_3/results"
+    data=load_data("data/viki/viki_3/split/test.json")
+    output_dir = "eval/viki_3/results"
     data=data[:200]
-    # data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/test.json")
-    # output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/56new/id"
+    # data=load_data("data/viki/viki_plan_final/split_6/id/test.json")
+    # output_dir = "eval/56new/id"
 
     os.makedirs(output_dir, exist_ok=True)
     model="Qwen2.5-VL-3B-Instruct_ans_sft_1"

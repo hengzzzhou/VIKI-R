@@ -138,7 +138,7 @@ def process_sample(idx, sample, output_dir):
     ground_truth=f"{list(sample['gt']['robots'].values())}"
     task_description = sample['gt']['description'].strip()
     robots_set = sample['gt']['robots']
-    image_path = f"/fs-computility/mabasic/zhouheng/work/embodied/verl/data/merged_images/{sample['image']}"
+    image_path = f"data/merged_images/{sample['image']}"
     answer=list(sample['gt']['robots'].values())
     robots_idle=sample['gt']['idle_robots']
     cot_response = generate_cot(task_description, robots_set, image_path, answer)
@@ -155,15 +155,15 @@ def process_sample(idx, sample, output_dir):
         "correct": res
     }
 
-#vllm serve /fs-computility/mabasic/zhouheng/work/embodied/verl/merged_model/rft_495_112 --served-model-name Qwen2.5-VL-7B-Instruct
-#vllm serve /fs-computility/mabasic/zhouheng/LLaMA-Factory/saves/qwen2.5_vl-7b/full/viki_plan_cot_488/checkpoint-30 --served-model-name Qwen2.5-VL-7B-Instruct
+#vllm serve models/qwen2.5_vl-7b/merged_model/rft_495_112 --served-model-name Qwen2.5-VL-7B-Instruct
+#vllm serve models/qwen2.5_vl-7b/full/viki_plan_cot_488/checkpoint-30 --served-model-name Qwen2.5-VL-7B-Instruct
 def main():
     
-    # data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/val.json")
-    # output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/56new/ood"
+    # data=load_data("data/viki/viki_plan_final/split_6/id/val.json")
+    # output_dir = "eval/56new/ood"
     
-    data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_1/final/test.json")
-    output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/viki_1/result"
+    data=load_data("data/viki/viki_1/final/test.json")
+    output_dir = "eval/viki_1/result"
     data=data[:1000]
     os.makedirs(output_dir, exist_ok=True)
     model="Qwen2.5-VL-3B-Instruct_rft"

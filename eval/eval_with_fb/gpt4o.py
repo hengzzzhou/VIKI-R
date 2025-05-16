@@ -165,7 +165,7 @@ def process_sample(idx, sample, output_dir, model, max_retries=3, use_feedback=F
     ground_truth=sample['gt']
     task_description = sample['gt']['description'].strip()
     robots_set = sample['gt']['robots']
-    image_path = f"/fs-computility/mabasic/zhouheng/work/embodied/verl/data/merged_images/{sample['image']}"
+    image_path = f"data/merged_images/{sample['image']}"
     
     # Get plan answer and convert to string if it's a dictionary/list
     plan_data = sample.get('gt', {}).get('time_steps', '')
@@ -236,8 +236,8 @@ Please try again with this feedback in mind and correct the mistakes in the prev
         "retry_results": retry_results
     }
 
-#vllm serve /fs-computility/mabasic/zhouheng/work/embodied/verl/merged_model/rft_495_112 --served-model-name Qwen2.5-VL-7B-Instruct
-#vllm serve /fs-computility/mabasic/zhouheng/LLaMA-Factory/saves/qwen2.5_vl-7b/full/viki_plan_cot_488/checkpoint-30 --served-model-name Qwen2.5-VL-7B-Instruct
+#vllm serve models/qwen2.5_vl-7b/merged_model/rft_495_112 --served-model-name Qwen2.5-VL-7B-Instruct
+#vllm serve models/qwen2.5_vl-7b/full/viki_plan_cot_488/checkpoint-30 --served-model-name Qwen2.5-VL-7B-Instruct
 def main():
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Process datasets with specified model')
@@ -249,12 +249,12 @@ def main():
     # Define data paths and output directories
     datasets = {
         'test': {
-            'data_path': "/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/test.json",
-            'output_dir': "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval_re/id"
+            'data_path': "data/viki/viki_plan_final/split_6/id/test.json",
+            'output_dir': "eval_re/id"
         },
         # 'val': {
-        #     'data_path': "/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/val.json",
-        #     'output_dir': "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval_re/ood"
+        #     'data_path': "data/viki/viki_plan_final/split_6/id/val.json",
+        #     'output_dir': "eval_re/ood"
         #}
     }
     model = args.model

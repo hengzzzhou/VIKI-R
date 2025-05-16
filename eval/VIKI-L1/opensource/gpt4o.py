@@ -140,7 +140,7 @@ def process_sample(idx, sample, output_dir, model_name):
     ground_truth=list(sample['gt']['robots'].values())
     task_description = sample['gt']['description'].strip()
     robots_set = sample['gt']['robots']
-    image_path = f"/fs-computility/mabasic/zhouheng/work/embodied/verl/data/merged_images/{sample['image']}"
+    image_path = f"data/merged_images/{sample['image']}"
     answer=list(sample['gt']['robots'].values())
     robots_idle=sample['gt']['idle_robots']
     cot_response = generate_cot(task_description, robots_set, image_path, answer, model_name)
@@ -166,11 +166,11 @@ def main():
     parser.add_argument('--model', type=str, required=False,default="Qwen/Qwen2.5-VL-72B-Instruct", help='Model name to use for inference')
     args = parser.parse_args()
     
-    # data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_plan_final/split_6/id/val.json")
-    # output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/56new/ood"
+    # data=load_data("data/viki/viki_plan_final/split_6/id/val.json")
+    # output_dir = "eval/56new/ood"
     
-    data=load_data("/fs-computility/mabasic/zhouheng/work/embodied/verl/data/viki/viki_1/final/test.json")
-    output_dir = "/fs-computility/mabasic/zhouheng/work/embodied/verl/eval/viki_1/opensource/result_open"
+    data=load_data("data/viki/viki_1/final/test.json")
+    output_dir = "eval/viki_1/opensource/result_open"
     data=data[:300]
     os.makedirs(output_dir, exist_ok=True)
     model = args.model  # Use model name from command line argument
