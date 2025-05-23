@@ -15,12 +15,18 @@ VIKI‑R: Coordinating Embodied Multi-Agent Cooperation via Reinforcement Learni
 ### Model Setup
 1. Download base models from HuggingFace:
    ```bash
-   git clone https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct
+   git clone https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct
    ```
 
 ### Dataset Preparation
-1. Download required datasets:
+1. Download our datasets we provided:
+Our VIKI dataset is organized into four subdirectories:
+VIKI-L1: Agent Activation task data
+VIKI-L2: Task Planning data
+VIKI-L3: Trajectory Perception task data
+cot: Chain‐of‐Thought cold‐start data
 
+2. You can write a script to load the Parquet files and reconstruct their contents—extracting both the image data and the associated prompt metadata—for easy inspection and analysis. 
 
 ## Training
 
